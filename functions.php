@@ -4,7 +4,7 @@
 function init_theme()
 {
     // Support for thumbnails
-    add_theme_support('post-thumbnail');
+    add_theme_support('post-thumbnails');
     //Support for title tag in head tag
     add_theme_support('title-tag');
     //Adding a menu
