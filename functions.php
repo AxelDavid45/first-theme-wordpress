@@ -1,7 +1,8 @@
 <?php
 
 // Functions for add supports to wordpress theme
-function init_theme() {
+function init_theme()
+{
     // Support for thumbnails
     add_theme_support('post-thumbnail');
     //Support for title tag in head tag
@@ -16,8 +17,26 @@ function init_theme() {
 // Add the function to a hook
 add_action('after_setup_theme', 'init_theme');
 
+// Function for add a widget in the footer
+function sidebar()
+{
+    register_sidebar(array(
+        'name' => 'Pie de página',
+        'id' => 'footer',
+        'description' => 'Zona de widgets para pie de página',
+        'before_title' => '<p>',
+        'after_title' => '</p>',
+        'before_widget' => '<div id="%1$s" class="%2$s">',
+        'after_widget' => '</div>'
+    ));
+}
+
+//Registering the function in widgets
+add_action('widgets_init', 'sidebar');
+
 // Load assets that the project needs
-function assets() {
+function assets()
+{
     // Adding bootstrap
     wp_register_style(
         'bootstrap',
@@ -68,7 +87,7 @@ function assets() {
     );
 
     // Adding a custom javascript file
-    $customJsUrl = get_template_directory_uri().'/assets/js/custom.js';
+    $customJsUrl = get_template_directory_uri() . '/assets/js/custom.js';
     wp_enqueue_script(
         'custom',
         $customJsUrl,
