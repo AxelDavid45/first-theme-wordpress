@@ -2,8 +2,15 @@
 
 // Functions for add supports to wordpress theme
 function init_theme() {
+    // Support for thumbnails
     add_theme_support('post-thumbnail');
+    //Support for title tag in head tag
     add_theme_support('title-tag');
+    //Adding a menu
+    register_nav_menus(array(
+        'top_menu' => 'Menú Principal'
+    ));
+
 }
 
 // Add the function to a hook
