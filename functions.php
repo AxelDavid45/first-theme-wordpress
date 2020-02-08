@@ -142,7 +142,7 @@ function productos_type() {
     );
 
     //Adding the custom type
-    register_post_type('Producto', $args);
+    register_post_type('producto', $args);
 
 }
 //Adding function productos_type to hook init
