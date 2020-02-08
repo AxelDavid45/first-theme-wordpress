@@ -74,13 +74,23 @@ function assets()
         '1.16.0',
         true
     );
+    //Adding fontawesome
+    wp_register_script(
+        'fontawesome',
+        'https://kit.fontawesome.com/4bc87b4ae7.js',
+        '',
+        '1.0',
+        true
+    );
+
     // Adding to queue popper and jquery
     wp_enqueue_script(
         'bootstrap',
         'https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js',
         array(
             'jquery',
-            'popper'
+            'popper',
+            'fontawesome'
         ),
         '4.4.1',
         true
