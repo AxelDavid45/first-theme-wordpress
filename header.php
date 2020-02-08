@@ -15,7 +15,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4">
-                <img src="<?= get_template_directory_uri() ?>/assets/" alt="">
+                <img src="<?= get_template_directory_uri() ?>/assets/img/logo.png" alt="">
             </div>
         </div>
     </div>
