@@ -99,3 +99,41 @@ function assets()
 
 // Loading the function before show the page
 add_action('wp_enqueue_scripts', 'assets');
+
+// Function to create a custom type post
+function productos_type() {
+    // Labels array with custom settings
+    $labels = array(
+        'name' => 'Productos',
+        'single_name' => 'Producto',
+        'menu_name' => 'Productos'
+    );
+    $supports = array(
+        'title',
+        'editor',
+        'thumbnail',
+        'revisions'
+    );
+
+    //Arguments with custom settings
+    $args = array(
+        'label' => 'Productos',
+        'description' => 'Productos de platzi',
+        'labels' => $labels,
+        'supports' => $supports,
+        'public' => true,
+        'show_in_menu' => true,
+        'menu_position' => 5,
+        'menu_icon' => 'dashicons-cart',
+        'can_export' => true,
+        'publicly_queryable' => true,
+        'rewrite' => true,
+        'show_in_rest' => true
+    );
+
+    //Adding the custom type
+    register_post_type('Producto', $args);
+
+}
+//Adding function productos_type to hook init
+add_action('init', 'productos_type');
