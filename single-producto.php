@@ -12,6 +12,14 @@
                             <div class="card-body">
                                 <h2 class="card-title"><?= the_title(); ?></h2>
                                 <?php the_content(); ?>
+                                <button class="btn btn-warning">
+                                    <i class="fas fa-cash-register"></i>
+                                    Comprar
+                                </button>
+                                <button class="btn btn-primary">
+                                    <i class="fas fa-shopping-cart"></i>
+                                    Agregar al carrito
+                                </button>
                             </div>
                         </div>
                     </div>
