@@ -24,6 +24,10 @@
                         </div>
                     </div>
                 </div>
+            <?php
+            //Adding the navigation part
+                get_template_part('template-parts/post', 'navigation');
+                ?>
 
             <?php endwhile; ?>
         <?php endif; ?>
