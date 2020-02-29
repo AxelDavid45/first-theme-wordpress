@@ -18,7 +18,7 @@
                 <img src="<?= get_template_directory_uri() ?>/assets/img/logo.png" alt="">
             </div>
             <div class="col-md-8">
-                <nav>
+                <nav class="text-right">
                     <?php wp_nav_menu(
                         array(
                             'theme_localization' => 'top_menu',
