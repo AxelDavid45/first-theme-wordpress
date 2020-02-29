@@ -8,8 +8,8 @@
 </footer>
 
 <?php
-    //Call footer from wordpress
-    wp_footer();
+//Call footer from wordpress
+wp_footer();
 ?>
 
 </body>

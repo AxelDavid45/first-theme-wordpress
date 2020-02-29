@@ -8,10 +8,11 @@ function init_theme()
     //Support for title tag in head tag
     add_theme_support('title-tag');
     //Adding a menu
-    register_nav_menus(array(
-        'top_menu' => 'Menú Principal'
-    ));
-
+    register_nav_menus(
+        array(
+            'top_menu' => 'Menú Principal'
+        )
+    );
 }
 
 // Add the function to a hook
@@ -20,15 +21,17 @@ add_action('after_setup_theme', 'init_theme');
 // Function for add a widget in the footer
 function sidebar()
 {
-    register_sidebar(array(
-        'name' => 'Pie de página',
-        'id' => 'footer',
-        'description' => 'Zona de widgets para pie de página',
-        'before_title' => '<p>',
-        'after_title' => '</p>',
-        'before_widget' => '<div id="%1$s" class="%2$s">',
-        'after_widget' => '</div>'
-    ));
+    register_sidebar(
+        array(
+            'name' => 'Pie de página',
+            'id' => 'footer',
+            'description' => 'Zona de widgets para pie de página',
+            'before_title' => '<p>',
+            'after_title' => '</p>',
+            'before_widget' => '<div id="%1$s" class="%2$s">',
+            'after_widget' => '</div>'
+        )
+    );
 }
 
 //Registering the function in widgets
@@ -111,7 +114,8 @@ function assets()
 add_action('wp_enqueue_scripts', 'assets');
 
 // Function to create a custom type post
-function productos_type() {
+function productos_type()
+{
     // Labels array with custom settings
     $labels = array(
         'name' => 'Productos',
@@ -143,7 +147,7 @@ function productos_type() {
 
     //Adding the custom type
     register_post_type('producto', $args);
-
 }
+
 //Adding function productos_type to hook init
 add_action('init', 'productos_type');

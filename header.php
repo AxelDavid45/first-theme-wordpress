@@ -19,11 +19,13 @@
             </div>
             <div class="col-md-8">
                 <nav>
-                    <?php wp_nav_menu(array(
-                        'theme_localization' => 'top_menu',
-                        'menu_class' => 'menu-principal',
-                        'container_class' => 'container-menu'
-                    )); ?>
+                    <?php wp_nav_menu(
+                        array(
+                            'theme_localization' => 'top_menu',
+                            'menu_class' => 'menu-principal',
+                            'container_class' => 'container-menu'
+                        )
+                    ); ?>
                 </nav>
             </div>
         </div>

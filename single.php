@@ -3,7 +3,7 @@
         <?php if (have_posts()): ?>
             <?php while (have_posts()): the_post(); ?>
 
-                <div class="card mb-3" >
+                <div class="card mb-3">
                     <div class="row no-gutters">
                         <div class="col-md-6">
                             <?php the_post_thumbnail('large'); ?>
@@ -16,8 +16,8 @@
                         </div>
                     </div>
                 </div>
-            <?php
-            //Adding the navigation part
+                <?php
+                //Adding the navigation part
                 get_template_part('template-parts/post', 'navigation');
                 ?>
 

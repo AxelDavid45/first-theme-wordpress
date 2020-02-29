@@ -1,4 +1,5 @@
 <?php
+
 // Brings the header file
 get_header();
 ?>
