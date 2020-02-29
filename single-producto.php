@@ -53,7 +53,6 @@
                                     </a>
                                 </div>
 
-
                             <?php
                             endwhile;
                         endif;
