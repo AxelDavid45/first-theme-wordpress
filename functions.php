@@ -151,3 +151,25 @@ function productos_type()
 
 //Adding function productos_type to hook init
 add_action('init', 'productos_type');
+
+//Function for adding a new taxonomy
+function pgRegisterTaxonomy()
+{
+    //Arguments
+    $args = array(
+        'hierarchical' => true,
+        'labels' => array(
+            'name' => 'Categorias de Productos',
+            'singular_name' => 'Categoria de Productos'
+        ),
+        'show_in_nav_menu' => true,
+        'show_admin_column' => true,
+        'rewrite' => array(
+            'slug' => 'categoria-productos'
+        )
+    );
+    //Registering the taxonomy
+    register_taxonomy('categoria-productos', array('producto'), $args);
+}
+//Add the taxonomy to init hook
+add_action('init', 'pgRegisterTaxonomy');
