@@ -12,6 +12,11 @@
                             <div class="card-body">
                                 <h2 class="card-title"><?= the_title(); ?></h2>
                                 <?php the_content(); ?>
+                                <div class="col">
+                                    <h4>Envianos tus dudas</h4>
+                                    <?= do_shortcode('[contact-form-7 id="56" title="Formulario
+                                    de contacto"]')?>
+                                </div> 
                                 <button class="btn btn-warning">
                                     <i class="fas fa-cash-register"></i>
                                     Comprar
