@@ -6,9 +6,25 @@
                 <?php the_content(); ?>
             <?php endwhile; ?>
         <?php endif; ?>
-
         <div class="contenedor-productos my-3">
             <h2 class="text-center">PRODUCTOS RECIENTES</h2>
+            <div class="row">
+                <div class="col-md-12">
+                    <select class="form-control" name="categorias-productos"
+                            id="categorias-productos">
+                        <option value="">Todos los productos</option>
+                        <?php $terms = get_terms(
+                            'categoria-productos',
+                            array(
+                                'hidden_empty' => true
+                            )
+                        ); ?>
+                        <?php foreach ($terms as $term): ?>
+                            <option value="<?= $term->slug?>"><?= $term->name ?> </option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+            </div>
             <div class="row">
                 <?php
                 //Create the arguments for the wp_query object

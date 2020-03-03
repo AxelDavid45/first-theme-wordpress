@@ -16,7 +16,7 @@
                                     <h4>Envianos tus dudas</h4>
                                     <?= do_shortcode('[contact-form-7 id="56" title="Formulario
                                     de contacto"]')?>
-                                </div> 
+                                </div>
                                 <button class="btn btn-warning">
                                     <i class="fas fa-cash-register"></i>
                                     Comprar
