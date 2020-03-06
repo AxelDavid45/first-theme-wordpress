@@ -20,12 +20,12 @@
                             )
                         ); ?>
                         <?php foreach ($terms as $term): ?>
-                            <option value="<?= $term->slug?>"><?= $term->name ?> </option>
+                            <option value="<?= $term->slug ?>"><?= $term->name ?> </option>
                         <?php endforeach; ?>
                     </select>
                 </div>
             </div>
-            <div class="row">
+            <div class="row" id="resultado">
                 <?php
                 //Create the arguments for the wp_query object
                 $args = array(
@@ -58,6 +58,12 @@
                         </div>
                     <?php endwhile; ?>
                 <?php endif; ?>
+
+            </div>
+            <div class="row justify-content-center text-center">
+                <img class="hidden" id="loading-spinner" src="<?= get_template_directory_uri()
+                ?>/assets/img/eclipse-loading.gif"
+                     alt="">
             </div>
         </div>
 

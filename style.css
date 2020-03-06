@@ -70,3 +70,7 @@ footer p {
 .lista-productos h4 a {
     color: #000
 }
+
+.hidden {
+    display: none!important;
+}

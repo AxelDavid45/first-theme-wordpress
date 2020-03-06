@@ -108,6 +108,15 @@ function assets()
         '1.0',
         true
     );
+
+    // The js file for ajax requests
+    wp_localize_script(
+        'custom',
+        'pg',
+        array(
+            'ajaxurl' => admin_url('admin-ajax.php')
+        )
+    );
 }
 
 // Loading the function before show the page
@@ -171,5 +180,54 @@ function pgRegisterTaxonomy()
     //Registering the taxonomy
     register_taxonomy('categoria-productos', array('producto'), $args);
 }
+
 //Add the taxonomy to init hook
 add_action('init', 'pgRegisterTaxonomy');
+
+//Adding ProductFilterAjax to ajax hooks
+add_action('wp_ajax_nopriv_ProductFilterAjax', 'ProductFilterAjax');
+add_action('wp_ajax_ProductFilterAjax', 'ProductFilterAjax');
+function ProductFilterAjax()
+{
+    //Creating the arguments for custom loop
+    $args = array(
+        'post_type' => 'producto',
+        'posts_per_page' => -1,
+        'order' => 'DESC',
+        'orderBy' => 'title'
+    );
+
+    // Verifying if exists a value from categoria param
+    if (isset($_POST['categoria']) && $_POST['categoria'] != '') {
+        $args['tax_query'] = array(
+            array(
+                'taxonomy' => 'categoria-productos',
+                'field' => 'slug',
+                'terms' => $_POST['categoria']
+            )
+        );
+    }
+    //Create the object
+    $producto = new WP_Query($args);
+
+    if ($producto->have_posts()) {
+        //An array for return in json format
+        $json = array();
+        while ($producto->have_posts()) {
+            //Get the post
+            $producto->the_post();
+            //Fill the json array
+            array_push(
+                $json,
+                array(
+                    'img' => get_the_post_thumbnail(get_the_ID(), 'large'),
+                    'link' => get_the_permalink(),
+                    'title' => get_the_title()
+                )
+            );
+        }
+    }
+    //Return a json response
+    wp_send_json($json);
+}
+
