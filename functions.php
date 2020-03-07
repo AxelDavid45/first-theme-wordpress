@@ -114,7 +114,8 @@ function assets()
         'custom',
         'pg',
         array(
-            'ajaxurl' => admin_url('admin-ajax.php')
+            'ajaxurl' => admin_url('admin-ajax.php'),
+            'apiUrl' => 'wp-json/pg/v1/'
         )
     );
 }
@@ -231,3 +232,54 @@ function ProductFilterAjax()
     wp_send_json($json);
 }
 
+//------Endpoint Rest
+// Registering our function to rest_api_init hook
+add_action('rest_api_init', 'pgNovedadesEndpoint');
+
+// This function receives the request
+function pgNovedadesEndpoint()
+{
+    register_rest_route(
+        'pg/v1',
+        '/novedades/(?P<cantidad>\d+)',
+        array(
+            'methods' => 'GET',
+            'callback' => 'getNovedades'
+        )
+    );
+}
+
+// Function that returns the query result of the request
+function getNovedades($data)
+{
+    //Creating the arguments for custom loop
+    $args = array(
+        'post_type' => 'post',
+        'posts_per_page' => $data['cantidad'],
+        'order' => 'DESC',
+        'orderBy' => 'title'
+    );
+
+    //Create the object
+    $novedades = new WP_Query($args);
+
+    if ($novedades->have_posts()) {
+        //An array for return in json format
+        $json = array();
+        while ($novedades->have_posts()) {
+            //Get the post
+            $novedades->the_post();
+            //Fill the json array
+            array_push(
+                $json,
+                array(
+                    'img' => get_the_post_thumbnail(get_the_ID(), 'large'),
+                    'link' => get_the_permalink(),
+                    'title' => get_the_title()
+                )
+            );
+        }
+    }
+    //Return a json response
+    return $json;
+}

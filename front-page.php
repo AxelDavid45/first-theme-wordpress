@@ -25,7 +25,7 @@
                     </select>
                 </div>
             </div>
-            <div class="row" id="resultado">
+            <div class="row" id="resultado-productos">
                 <?php
                 //Create the arguments for the wp_query object
                 $args = array(
@@ -61,11 +61,22 @@
 
             </div>
             <div class="row justify-content-center text-center">
-                <img class="hidden" id="loading-spinner" src="<?= get_template_directory_uri()
+                <img class="hidden" id="loading-spinner-productos" src="<?=
+                get_template_directory_uri()
                 ?>/assets/img/eclipse-loading.gif"
                      alt="">
             </div>
         </div>
+        <div class="row justify-content-center">
+            <h2>Novedades</h2>
+            <div class="row justify-content-center text-center">
+                <img class="hidden" id="loading-spinner-novedades" src="<?=
+                get_template_directory_uri()
+                ?>/assets/img/eclipse-loading.gif"
+                     alt="">
+            </div>
+        </div>
+        <div class="row justify-content-center" id="resultado-novedades"></div>
 
 
     </main>
